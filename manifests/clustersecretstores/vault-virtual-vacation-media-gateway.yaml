@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1
+kind: ClusterSecretStore
+metadata:
+  name: vault-virtual-vacation-media-gateway
+spec:
+  provider:
+    vault:
+      server: http://vault.vault.svc:8200
+      path: kv
+      version: v2
+      auth:
+        kubernetes:
+          mountPath: kubernetes
+          role: staging-virtual-vacation-media-gateway
+          serviceAccountRef:
+            name: eso-virtual-vacation-media-gateway
+            namespace: external-secrets

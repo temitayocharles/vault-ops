@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1
+kind: ClusterSecretStore
+metadata:
+  name: vault-fintech-frontend-web
+spec:
+  provider:
+    vault:
+      server: http://vault.vault.svc:8200
+      path: kv
+      version: v2
+      auth:
+        kubernetes:
+          mountPath: kubernetes
+          role: staging-fintech-frontend-web
+          serviceAccountRef:
+            name: eso-fintech-frontend-web
+            namespace: external-secrets

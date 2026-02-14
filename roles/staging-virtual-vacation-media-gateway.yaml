@@ -1,0 +1,7 @@
+bound_service_account_names:
+- eso-virtual-vacation-media-gateway
+bound_service_account_namespaces:
+- external-secrets
+policies:
+- staging-virtual-vacation-media-gateway
+ttl: 24h

@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1
+kind: ClusterSecretStore
+metadata:
+  name: vault-fintech-notification-service-api
+spec:
+  provider:
+    vault:
+      server: http://vault.vault.svc:8200
+      path: kv
+      version: v2
+      auth:
+        kubernetes:
+          mountPath: kubernetes
+          role: staging-fintech-notification-service-api
+          serviceAccountRef:
+            name: eso-fintech-notification-service-api
+            namespace: external-secrets

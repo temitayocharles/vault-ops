@@ -1,0 +1,46 @@
+env: staging
+services:
+  # Fintech suite
+  - repo: fintech-account-service
+    service: api
+    namespace: apps
+  - repo: fintech-transaction-service
+    service: api
+    namespace: apps
+  - repo: fintech-user-service
+    service: api
+    namespace: apps
+  - repo: fintech-notification-service
+    service: api
+    namespace: apps
+  - repo: fintech-audit-service
+    service: api
+    namespace: apps
+  - repo: fintech-analytics-service
+    service: api
+    namespace: apps
+  - repo: fintech-frontend
+    service: web
+    namespace: apps
+  - repo: fintech-infrastructure
+    service: keycloak
+    namespace: apps
+
+  # Cila Health
+  - repo: cila-health-monolith
+    service: monolith
+    namespace: apps-dev
+  - repo: cila-health-microservices
+    service: device-ingestion
+    namespace: apps
+
+  # Apps
+  - repo: ai-adventure-game
+    service: game
+    namespace: apps
+  - repo: virtual-vacation
+    service: backend
+    namespace: apps
+  - repo: virtual-vacation
+    service: media-gateway
+    namespace: apps

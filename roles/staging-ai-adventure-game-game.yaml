@@ -1,0 +1,7 @@
+bound_service_account_names:
+- eso-ai-adventure-game-game
+bound_service_account_namespaces:
+- external-secrets
+policies:
+- staging-ai-adventure-game-game
+ttl: 24h

@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1
+kind: ClusterSecretStore
+metadata:
+  name: vault-cila-health-microservices-device-ingestion
+spec:
+  provider:
+    vault:
+      server: http://vault.vault.svc:8200
+      path: kv
+      version: v2
+      auth:
+        kubernetes:
+          mountPath: kubernetes
+          role: staging-cila-health-microservices-device-ingestion
+          serviceAccountRef:
+            name: eso-cila-health-microservices-device-ingestion
+            namespace: external-secrets

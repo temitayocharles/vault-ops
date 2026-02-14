@@ -1,0 +1,6 @@
+# Inventory for generators
+env: staging
+services:
+  - repo: fintech-user-service
+    service: api
+    namespace: apps
