@@ -25,6 +25,9 @@ services:
   - repo: fintech-infrastructure
     service: keycloak
     namespace: apps
+  - repo: fintech-infrastructure
+    service: postgres
+    namespace: apps
 
   # Cila Health
   - repo: cila-health-monolith
