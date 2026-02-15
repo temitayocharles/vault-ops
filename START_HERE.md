@@ -18,3 +18,6 @@ Rules:
 1. Generate policies/roles/manifests from an inventory.
 2. Apply policies/roles to Vault.
 3. Apply manifests to the cluster.
+
+## Playbooks
+- New service playbook: [docs/NEW_SERVICE.md](docs/NEW_SERVICE.md)
