@@ -47,3 +47,14 @@ services:
   - repo: virtual-vacation
     service: media-gateway
     namespace: apps
+
+  # Autodesk project (multi-service)
+  - repo: autodesk-project
+    service: data-api-service
+    namespace: apps
+  - repo: autodesk-project
+    service: data-ingestion-service
+    namespace: apps
+  - repo: autodesk-project
+    service: data-processing-service
+    namespace: apps
