@@ -61,5 +61,4 @@ sudo -n k3s kubectl get clustersecretstore | grep vault-
 
 ## 5) Next Step
 Seed the Vault path with secrets (from `.env.example`) using:
-- `temitayocharles/utilities-scripts`
-
+- [`temitayocharles/utilities-scripts`](https://github.com/temitayocharles/utilities-scripts)
