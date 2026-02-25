@@ -2,6 +2,9 @@
 
 This folder provides a manual flow for applying Vault policies/roles and ESO objects for Cila.
 
+For a fresh cluster, bootstrap first:
+- [cila-health-monolith/manual/runbooks/00-bootstrap-fresh-cluster.md](https://github.com/temitayocharles/cila-health-monolith/blob/main/manual/runbooks/00-bootstrap-fresh-cluster.md)
+
 Start in order:
 1. [manual/runbooks/00-prerequisites.md](./runbooks/00-prerequisites.md)
 2. [manual/runbooks/01-generate-policies-roles.md](./runbooks/01-generate-policies-roles.md)
