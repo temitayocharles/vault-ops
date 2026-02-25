@@ -36,6 +36,15 @@ services:
   - repo: cila-health-microservices
     service: device-ingestion
     namespace: apps
+  - repo: cila-health-microservices
+    service: notifications
+    namespace: apps
+  - repo: cila-health-microservices
+    service: identity-access
+    namespace: apps
+  - repo: cila-health-microservices
+    service: patient-profile
+    namespace: apps
 
   # Apps
   - repo: ai-adventure-game
