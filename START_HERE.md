@@ -21,3 +21,4 @@ Rules:
 
 ## Playbooks
 - New service playbook: [docs/NEW_SERVICE.md](docs/NEW_SERVICE.md)
+- Manual non-GitOps flow: [manual/README.md](manual/README.md)

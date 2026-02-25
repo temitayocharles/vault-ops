@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../manifests/serviceaccounts/eso-cila-health-monolith-monolith.yaml
+  - ../../../manifests/serviceaccounts/eso-cila-health-microservices-device-ingestion.yaml
+  - ../../../manifests/serviceaccounts/eso-cila-health-microservices-identity-access.yaml
+  - ../../../manifests/serviceaccounts/eso-cila-health-microservices-patient-profile.yaml
+  - ../../../manifests/serviceaccounts/eso-cila-health-microservices-notifications.yaml
+  - ../../../manifests/serviceaccounts/eso-cila-health-microservices-clinical-intake.yaml
+  - ../../../manifests/clustersecretstores/vault-cila-health-monolith-monolith.yaml
+  - ../../../manifests/clustersecretstores/vault-cila-health-microservices-device-ingestion.yaml
+  - ../../../manifests/clustersecretstores/vault-cila-health-microservices-identity-access.yaml
+  - ../../../manifests/clustersecretstores/vault-cila-health-microservices-patient-profile.yaml
+  - ../../../manifests/clustersecretstores/vault-cila-health-microservices-notifications.yaml
+  - ../../../manifests/clustersecretstores/vault-cila-health-microservices-clinical-intake.yaml
