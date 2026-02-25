@@ -1,69 +1,65 @@
 env: staging
 services:
-  # Fintech suite
-  - repo: fintech-account-service
-    service: api
-    namespace: apps
-  - repo: fintech-transaction-service
-    service: api
-    namespace: apps
-  - repo: fintech-user-service
-    service: api
-    namespace: apps
-  - repo: fintech-notification-service
-    service: api
-    namespace: apps
-  - repo: fintech-audit-service
-    service: api
-    namespace: apps
-  - repo: fintech-analytics-service
-    service: api
-    namespace: apps
-  - repo: fintech-frontend
-    service: web
-    namespace: apps
-  - repo: fintech-infrastructure
-    service: keycloak
-    namespace: apps
-  - repo: fintech-infrastructure
-    service: postgres
-    namespace: apps
-
-  # Cila Health
-  - repo: cila-health-monolith
-    service: monolith
-    namespace: apps-dev
-  - repo: cila-health-microservices
-    service: device-ingestion
-    namespace: apps
-  - repo: cila-health-microservices
-    service: notifications
-    namespace: apps
-  - repo: cila-health-microservices
-    service: identity-access
-    namespace: apps
-  - repo: cila-health-microservices
-    service: patient-profile
-    namespace: apps
-
-  # Apps
-  - repo: ai-adventure-game
-    service: game
-    namespace: apps
-  - repo: virtual-vacation
-    service: backend
-    namespace: apps
-  - repo: virtual-vacation
-    service: media-gateway
-    namespace: apps
-
-  # Autodesk project (multi-service)
-  - repo: autodesk-project
-    service: data-api-service
-    namespace: apps
-  - repo: autodesk-project
-    service: data-ingestion-service
-    namespace: apps
-  - repo: autodesk-project
-    service: data-processing-service
-    namespace: apps
+- repo: fintech-account-service
+  service: api
+  namespace: apps
+- repo: fintech-transaction-service
+  service: api
+  namespace: apps
+- repo: fintech-user-service
+  service: api
+  namespace: apps
+- repo: fintech-notification-service
+  service: api
+  namespace: apps
+- repo: fintech-audit-service
+  service: api
+  namespace: apps
+- repo: fintech-analytics-service
+  service: api
+  namespace: apps
+- repo: fintech-frontend
+  service: web
+  namespace: apps
+- repo: fintech-infrastructure
+  service: keycloak
+  namespace: apps
+- repo: fintech-infrastructure
+  service: postgres
+  namespace: apps
+- repo: cila-health-monolith
+  service: monolith
+  namespace: apps-dev
+- repo: cila-health-microservices
+  service: device-ingestion
+  namespace: apps
+- repo: cila-health-microservices
+  service: notifications
+  namespace: apps
+- repo: cila-health-microservices
+  service: identity-access
+  namespace: apps
+- repo: cila-health-microservices
+  service: patient-profile
+  namespace: apps
+- repo: cila-health-microservices
+  service: clinical-intake
+  namespace: apps
+- repo: ai-adventure-game
+  service: game
+  namespace: apps
+- repo: virtual-vacation
+  service: backend
+  namespace: apps
+- repo: virtual-vacation
+  service: media-gateway
+  namespace: apps
+- repo: autodesk-project
+  service: data-api-service
+  namespace: apps
+- repo: autodesk-project
+  service: data-ingestion-service
+  namespace: apps
+- repo: autodesk-project
+  service: data-processing-service
+  namespace: apps

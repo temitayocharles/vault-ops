@@ -1,0 +1,7 @@
+bound_service_account_names:
+- eso-cila-health-microservices-clinical-intake
+bound_service_account_namespaces:
+- external-secrets
+policies:
+- staging-cila-health-microservices-clinical-intake
+ttl: 24h
