@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - vault-ai-adventure-game-game.yaml
+  - vault-autodesk-project-data-api-service.yaml
+  - vault-autodesk-project-data-ingestion-service.yaml
+  - vault-autodesk-project-data-processing-service.yaml
+  - vault-cila-health-microservices-clinical-intake.yaml
+  - vault-cila-health-microservices-device-ingestion.yaml
+  - vault-cila-health-microservices-identity-access.yaml
+  - vault-cila-health-microservices-notifications.yaml
+  - vault-cila-health-microservices-patient-profile.yaml
+  - vault-cila-health-monolith-monolith.yaml
+  - vault-fintech-account-service-api.yaml
+  - vault-fintech-analytics-service-api.yaml
+  - vault-fintech-audit-service-api.yaml
+  - vault-fintech-frontend-web.yaml
+  - vault-fintech-infrastructure-keycloak.yaml
+  - vault-fintech-infrastructure-postgres.yaml
+  - vault-fintech-notification-service-api.yaml
+  - vault-fintech-transaction-service-api.yaml
+  - vault-fintech-user-service-api.yaml
+  - vault-virtual-vacation-backend.yaml
+  - vault-virtual-vacation-media-gateway.yaml

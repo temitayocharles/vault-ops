@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - eso-ai-adventure-game-game.yaml
+  - eso-autodesk-project-data-api-service.yaml
+  - eso-autodesk-project-data-ingestion-service.yaml
+  - eso-autodesk-project-data-processing-service.yaml
+  - eso-cila-health-microservices-clinical-intake.yaml
+  - eso-cila-health-microservices-device-ingestion.yaml
+  - eso-cila-health-microservices-identity-access.yaml
+  - eso-cila-health-microservices-notifications.yaml
+  - eso-cila-health-microservices-patient-profile.yaml
+  - eso-cila-health-monolith-monolith.yaml
+  - eso-fintech-account-service-api.yaml
+  - eso-fintech-analytics-service-api.yaml
+  - eso-fintech-audit-service-api.yaml
+  - eso-fintech-frontend-web.yaml
+  - eso-fintech-infrastructure-keycloak.yaml
+  - eso-fintech-infrastructure-postgres.yaml
+  - eso-fintech-notification-service-api.yaml
+  - eso-fintech-transaction-service-api.yaml
+  - eso-fintech-user-service-api.yaml
+  - eso-virtual-vacation-backend.yaml
+  - eso-virtual-vacation-media-gateway.yaml
