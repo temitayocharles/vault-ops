@@ -1,6 +1,6 @@
 # Manual Vault/ESO Track (No ArgoCD)
 
-This folder provides a manual flow for applying Vault policies/roles and ESO objects for Cila.
+This folder provides a manual flow for applying Vault policies, Kubernetes auth roles, and per-service ESO objects for Cila.
 
 For a fresh cluster, bootstrap first:
 - [cila-health-monolith/manual/runbooks/00-bootstrap-fresh-cluster.md](https://github.com/temitayocharles/cila-health-monolith/blob/main/manual/runbooks/00-bootstrap-fresh-cluster.md)
