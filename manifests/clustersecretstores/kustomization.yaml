@@ -22,3 +22,4 @@ resources:
   - vault-fintech-user-service-api.yaml
   - vault-virtual-vacation-backend.yaml
   - vault-virtual-vacation-media-gateway.yaml
+  - vault-virtual-vacation-app.yaml

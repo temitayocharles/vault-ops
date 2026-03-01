@@ -22,3 +22,4 @@ resources:
   - eso-fintech-user-service-api.yaml
   - eso-virtual-vacation-backend.yaml
   - eso-virtual-vacation-media-gateway.yaml
+  - eso-virtual-vacation-app.yaml

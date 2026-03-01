@@ -409,3 +409,27 @@ services:
   - LOG_LEVEL
   - METRICS_PORT
   - QUEUE_NAME
+- repo: virtual-vacation
+  service: app
+  namespace: apps
+  gitops_managed: true
+  store_name: vault-virtual-vacation-app
+  role_name: staging-virtual-vacation-app
+  policy_name: staging-virtual-vacation-app
+  vault_path: temitayo/staging/virtual-vacation/virtual-vacation
+  app_manifest: apps/virtual-vacation/helm.yaml
+  values_path: values/virtual-vacation/values.yaml
+  chart_path: applications/virtual-vacation
+  config_path: applications/virtual-vacation/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/virtual-vacation-backend
+  required_secret_keys:
+  - DATABASE_URL
+  - POSTGRES_PASSWORD
+  - MONGODB_URL
+  - MINIO_ACCESS_KEY
+  - MINIO_SECRET_KEY
+  required_config_keys:
+  - NODE_ENV
+  - PORT
+  - REDIS_URL
+  - MINIO_ENDPOINT
