@@ -28,6 +28,14 @@ This file is the access contract for managed workloads.
 3. Apply policies and roles to Vault.
 4. Let Argo CD own the Kubernetes-side manifests, or apply the manual track when onboarding a fresh cluster.
 
+## Scripts in the Platform Model
+- `scripts/generate.py`
+  - generates per-service Vault policies, Kubernetes auth roles, ESO service accounts, and `ClusterSecretStore` manifests from the canonical inventory
+- `scripts/apply_to_vault.py`
+  - applies generated policies and roles to Vault
+
+These scripts define and apply access boundaries. They do not seed arbitrary secret values into workloads automatically, and they do not replace the GitOps deployment layer.
+
 ## Repo-Local Python
 Use the repo-local interpreter for scripts:
 
