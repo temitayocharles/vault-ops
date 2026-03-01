@@ -1,31 +1,44 @@
 # Start Here
 
-This repo owns Vault access boundaries (policies/roles) and the ESO SecretStores/ClusterSecretStores that map workloads to their Vault paths.
+This repo owns Vault access boundaries and the ESO objects that bind workloads to Vault.
 
-## Vault Path Standard (KV v2 mount: `kv/`)
+## What This Repo Owns
+- Vault policies
+- Kubernetes auth role payloads
+- ESO service accounts
+- `ClusterSecretStore` manifests
+- canonical workload inventory for secret access
 
-- Service-scoped secrets: `kv/temitayo/staging/<repo>/<service>`
-- Repo-shared secrets: `kv/temitayo/staging/<repo>/_global`
-- Global shared secrets: `kv/temitayo/staging/_global`
+## Path Standard
+KV v2 mount: `kv/`
 
-Rules:
-- Each workload gets a dedicated Vault policy + Kubernetes auth role.
-- ESO SecretStore/ClusterSecretStore must reference the matching role.
-- Global paths should stay small and stable.
+Expected path shapes:
+- service-scoped: `kv/temitayo/staging/<repo>/<service>`
+- repo-shared: `kv/temitayo/staging/<repo>/_global`
+- global shared: `kv/temitayo/staging/_global`
 
-## Workflow
+## Canonical Inventory
+- `/Users/charlie/Desktop/vault-ops/inventory.yaml`
 
-1. Generate policies/roles/manifests from an inventory.
-2. Apply policies/roles to Vault.
-3. Apply manifests to the cluster.
+This file is the access contract for managed workloads.
 
-## Script Entry Points
+## Standard Workflow
+1. Update inventory.
+2. Generate policies, roles, service accounts, and stores.
+3. Apply policies and roles to Vault.
+4. Let Argo CD own the Kubernetes-side manifests, or apply the manual track when onboarding a fresh cluster.
 
-- `scripts/generate.py` generates Vault policies, Kubernetes auth roles, ESO service accounts, and `ClusterSecretStore` manifests from inventory input.
-- `scripts/apply_to_vault.py` applies source policies and role payloads to Vault using the documented userpass flow.
+## Repo-Local Python
+Use the repo-local interpreter for scripts:
 
-These scripts manage access boundaries and ESO wiring. They do not mutate application charts or GitOps manifests directly.
+```bash
+/Users/charlie/Desktop/vault-ops/.venv/bin/python \
+  /Users/charlie/Desktop/vault-ops/scripts/generate.py --help
+
+/Users/charlie/Desktop/vault-ops/.venv/bin/python \
+  /Users/charlie/Desktop/vault-ops/scripts/apply_to_vault.py --help
+```
 
 ## Playbooks
-- New service playbook: [docs/NEW_SERVICE.md](docs/NEW_SERVICE.md)
-- Manual non-GitOps flow: [manual/README.md](manual/README.md)
+- `/Users/charlie/Desktop/vault-ops/docs/NEW_SERVICE.md`
+- `/Users/charlie/Desktop/vault-ops/manual/README.md`

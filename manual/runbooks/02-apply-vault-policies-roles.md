@@ -1,8 +1,9 @@
-# 02 Apply Policies and K8s Auth Roles to Vault
+# 02 Apply Policies and Kubernetes Auth Roles to Vault
 
 ```bash
-python3 scripts/apply_to_vault.py \
-  --policies ./policies \
-  --roles ./roles \
+/Users/charlie/Desktop/vault-ops/.venv/bin/python \
+  /Users/charlie/Desktop/vault-ops/scripts/apply_to_vault.py \
+  --policies /Users/charlie/Desktop/vault-ops/policies \
+  --roles /Users/charlie/Desktop/vault-ops/roles \
   --k8s-mount kubernetes
 ```

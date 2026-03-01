@@ -1,65 +1,327 @@
-env: staging
 services:
 - repo: fintech-account-service
   service: api
-  namespace: apps
-- repo: fintech-transaction-service
-  service: api
-  namespace: apps
-- repo: fintech-user-service
-  service: api
-  namespace: apps
-- repo: fintech-notification-service
-  service: api
-  namespace: apps
-- repo: fintech-audit-service
-  service: api
-  namespace: apps
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-fintech-account-service-api
+  role_name: staging-fintech-account-service-api
+  policy_name: staging-fintech-account-service-api
+  vault_path: temitayo/staging/fintech-account-service/api
+  app_manifest: applications/fintech/fintech-account-service.yaml
+  values_path: applications/fintech/fintech-account-service/values-staging.yaml
+  chart_path: applications/fintech-account-service
+  config_path: applications/fintech-account-service/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/fintech-account-service
+  required_secret_keys:
+  - DATABASE_URL
+  - ENCRYPTION_KEY
+  required_config_keys:
+  - APP_NAME
+  - ENV
+  - ENVIRONMENT
+  - LOG_LEVEL
+  - PORT
+  - KAFKA_BROKERS
 - repo: fintech-analytics-service
   service: api
-  namespace: apps
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-fintech-analytics-service-api
+  role_name: staging-fintech-analytics-service-api
+  policy_name: staging-fintech-analytics-service-api
+  vault_path: temitayo/staging/fintech-analytics-service/api
+  app_manifest: applications/fintech/fintech-analytics-service.yaml
+  values_path: applications/fintech/fintech-analytics-service/values-staging.yaml
+  chart_path: applications/fintech-analytics-service
+  config_path: applications/fintech-analytics-service/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/fintech-analytics-service
+  required_secret_keys:
+  - INFLUX_TOKEN
+  required_config_keys:
+  - APP_NAME
+  - ENV
+  - LOG_LEVEL
+  - PORT
+  - KAFKA_BROKERS
+  - INFLUX_URL
+  - INFLUX_ORG
+  - INFLUX_BUCKET
+- repo: fintech-audit-service
+  service: api
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-fintech-audit-service-api
+  role_name: staging-fintech-audit-service-api
+  policy_name: staging-fintech-audit-service-api
+  vault_path: temitayo/staging/fintech-audit-service/api
+  app_manifest: applications/fintech/fintech-audit-service.yaml
+  values_path: applications/fintech/fintech-audit-service/values-staging.yaml
+  chart_path: applications/fintech-audit-service
+  config_path: applications/fintech-audit-service/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/fintech-audit-service
+  required_secret_keys: []
+  required_config_keys:
+  - APP_NAME
+  - ENV
+  - LOG_LEVEL
+  - PORT
+  - KAFKA_BROKERS
+  - ES_HOST
 - repo: fintech-frontend
   service: web
-  namespace: apps
-- repo: fintech-infrastructure
-  service: keycloak
-  namespace: apps
-- repo: fintech-infrastructure
-  service: postgres
-  namespace: apps
-- repo: cila-health-monolith
-  service: monolith
   namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-fintech-frontend-web
+  role_name: staging-fintech-frontend-web
+  policy_name: staging-fintech-frontend-web
+  vault_path: temitayo/staging/fintech-frontend/web
+  app_manifest: applications/fintech/fintech-frontend.yaml
+  values_path: applications/fintech/fintech-frontend/values-staging.yaml
+  chart_path: applications/fintech-frontend
+  config_path: applications/fintech-frontend/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/fintech-frontend
+  required_secret_keys: []
+  required_config_keys:
+  - APP_NAME
+  - ENV
+  - LOG_LEVEL
+  - PORT
+  - REACT_APP_ACCOUNT_API_URL
+  - REACT_APP_TRANSACTION_API_URL
+  - REACT_APP_AUDIT_API_URL
+  - REACT_APP_ANALYTICS_API_URL
+  - REACT_APP_NOTIFICATION_API_URL
+- repo: fintech-notification-service
+  service: api
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-fintech-notification-service-api
+  role_name: staging-fintech-notification-service-api
+  policy_name: staging-fintech-notification-service-api
+  vault_path: temitayo/staging/fintech-notification-service/api
+  app_manifest: applications/fintech/fintech-notification-service.yaml
+  values_path: applications/fintech/fintech-notification-service/values-staging.yaml
+  chart_path: applications/fintech-notification-service
+  config_path: applications/fintech-notification-service/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/fintech-notification-service
+  required_secret_keys: []
+  required_config_keys:
+  - APP_NAME
+  - ENV
+  - LOG_LEVEL
+  - PORT
+  - KAFKA_BROKERS
+- repo: fintech-transaction-service
+  service: api
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-fintech-transaction-service-api
+  role_name: staging-fintech-transaction-service-api
+  policy_name: staging-fintech-transaction-service-api
+  vault_path: temitayo/staging/fintech-transaction-service/api
+  app_manifest: applications/fintech/fintech-transaction-service.yaml
+  values_path: applications/fintech/fintech-transaction-service/values-staging.yaml
+  chart_path: applications/fintech-transaction-service
+  config_path: applications/fintech-transaction-service/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/fintech-transaction-service
+  required_secret_keys:
+  - DATABASE_URL
+  required_config_keys:
+  - APP_NAME
+  - ENV
+  - ENVIRONMENT
+  - LOG_LEVEL
+  - PORT
+  - KAFKA_BROKERS
+- repo: fintech-user-service
+  service: api
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-fintech-user-service-api
+  role_name: staging-fintech-user-service-api
+  policy_name: staging-fintech-user-service-api
+  vault_path: temitayo/staging/fintech-user-service/api
+  app_manifest: applications/fintech/fintech-user-service.yaml
+  values_path: applications/fintech/fintech-user-service/values-staging.yaml
+  chart_path: applications/fintech-user-service
+  config_path: applications/fintech-user-service/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/fintech-user-service
+  required_secret_keys:
+  - DATABASE_URL
+  - CLIENT_SECRET
+  required_config_keys:
+  - APP_NAME
+  - ENV
+  - LOG_LEVEL
+  - PORT
+  - KAFKA_BROKERS
+  - KEYCLOAK_URL
+  - KEYCLOAK_REALM
+  - KEYCLOAK_CLIENT_ID
 - repo: cila-health-microservices
   service: device-ingestion
-  namespace: apps
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-cila-health-microservices-device-ingestion
+  role_name: staging-cila-health-microservices-device-ingestion
+  policy_name: staging-cila-health-microservices-device-ingestion
+  vault_path: temitayo/staging/cila-health-microservices/device-ingestion
+  app_manifest: applications/cila-health/cila-health-device-ingestion.yaml
+  values_path: applications/cila-health/cila-health-device-ingestion/values-staging.yaml
+  chart_path: applications/cila-health-device-ingestion
+  config_path: applications/cila-health-device-ingestion/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/cila-health-device-ingestion
+  required_secret_keys:
+  - POSTGRES_USER
+  - POSTGRES_PASSWORD
+  - DEVICE_API_TOKEN
+  required_config_keys:
+  - POSTGRES_SERVER
+  - POSTGRES_PORT
+  - POSTGRES_DB
+  - REDIS_HOST
+  - REDIS_PORT
+  - REDIS_DB
+  - DEVICE_AUTH_ENABLED
 - repo: cila-health-microservices
   service: notifications
-  namespace: apps
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-cila-health-microservices-notifications
+  role_name: staging-cila-health-microservices-notifications
+  policy_name: staging-cila-health-microservices-notifications
+  vault_path: temitayo/staging/cila-health-microservices/notifications
+  app_manifest: applications/cila-health/cila-health-notifications.yaml
+  values_path: applications/cila-health/cila-health-notifications/values-staging.yaml
+  chart_path: applications/cila-health-notifications
+  config_path: applications/cila-health-notifications/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/cila-health-notifications
+  required_secret_keys:
+  - DATABASE_URL
+  required_config_keys:
+  - API_V1_STR
+  - SERVICE_NAME
+  - DEBUG
+  - TESTING
+  - REDIS_HOST
+  - REDIS_PORT
+  - REDIS_DB
+  - PROVIDER_EMAIL_ENABLED
+  - PROVIDER_SMS_ENABLED
+  - PROVIDER_PUSH_ENABLED
+  - DEFAULT_FROM_EMAIL
+  - DEFAULT_FROM_NAME
+  - MAX_RETRY_ATTEMPTS
+  - RETRY_BACKOFF_SECONDS
 - repo: cila-health-microservices
   service: identity-access
-  namespace: apps
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-cila-health-microservices-identity-access
+  role_name: staging-cila-health-microservices-identity-access
+  policy_name: staging-cila-health-microservices-identity-access
+  vault_path: temitayo/staging/cila-health-microservices/identity-access
+  app_manifest: applications/cila-health/cila-health-identity-access.yaml
+  values_path: applications/cila-health/cila-health-identity-access/values-staging.yaml
+  chart_path: applications/cila-health-identity-access
+  config_path: applications/cila-health-identity-access/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/cila-health-identity-access
+  required_secret_keys:
+  - DATABASE_URL
+  - JWT_SECRET
+  required_config_keys:
+  - SERVICE_NAME
+  - API_V1_STR
+  - ACCESS_TOKEN_TTL_MINUTES
+  - REFRESH_TOKEN_TTL_DAYS
+  - ALLOW_SELF_REGISTRATION
+  - SEED_DEFAULT_USERS
+  - DEFAULT_USER_ROLE
 - repo: cila-health-microservices
   service: patient-profile
-  namespace: apps
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-cila-health-microservices-patient-profile
+  role_name: staging-cila-health-microservices-patient-profile
+  policy_name: staging-cila-health-microservices-patient-profile
+  vault_path: temitayo/staging/cila-health-microservices/patient-profile
+  app_manifest: applications/cila-health/cila-health-patient-profile.yaml
+  values_path: applications/cila-health/cila-health-patient-profile/values-staging.yaml
+  chart_path: applications/cila-health-patient-profile
+  config_path: applications/cila-health-patient-profile/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/cila-health-patient-profile
+  required_secret_keys:
+  - DATABASE_URL
+  required_config_keys:
+  - SERVICE_NAME
+  - API_V1_STR
+  - DEBUG
 - repo: cila-health-microservices
   service: clinical-intake
-  namespace: apps
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-cila-health-microservices-clinical-intake
+  role_name: staging-cila-health-microservices-clinical-intake
+  policy_name: staging-cila-health-microservices-clinical-intake
+  vault_path: temitayo/staging/cila-health-microservices/clinical-intake
+  app_manifest: applications/cila-health/cila-health-clinical-intake.yaml
+  values_path: applications/cila-health/cila-health-clinical-intake/values-staging.yaml
+  chart_path: applications/cila-health-clinical-intake
+  config_path: applications/cila-health-clinical-intake/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/cila-health-clinical-intake
+  required_secret_keys:
+  - DATABASE_URL
+  required_config_keys:
+  - SERVICE_NAME
+  - API_V1_STR
+  - DEBUG
 - repo: ai-adventure-game
   service: game
-  namespace: apps
-- repo: virtual-vacation
+  namespace: apps-dev
+  gitops_managed: false
+  store_name: vault-ai-adventure-game-game
+  role_name: staging-ai-adventure-game-game
+  policy_name: staging-ai-adventure-game-game
+  vault_path: temitayo/staging/ai-adventure-game/game
+  app_manifest: applications/ai-adventure-game.yaml
+  values_path: applications/ai-adventure-game/values-staging.yaml
+  chart_path: applications/ai-adventure-game
+  config_path: applications/ai-adventure-game/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/ai-adventure-game
+  required_secret_keys:
+  - OPENAI_API_KEY
+  required_config_keys:
+  - APP_NAME
+- repo: autodesk-project
+  service: frontend
+  namespace: apps-dev
+  gitops_managed: false
+  store_name: vault-autodesk-project-frontend
+  role_name: staging-autodesk-project-frontend
+  policy_name: staging-autodesk-project-frontend
+  vault_path: temitayo/staging/autodesk-project/frontend
+  app_manifest: applications/autodesk-project/autodesk-project-frontend.yaml
+  values_path: applications/autodesk-project/autodesk-project-frontend/values-staging.yaml
+  chart_path: applications/autodesk-project-frontend
+  config_path: applications/autodesk-project-frontend/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/autodesk-project-frontend
+  required_secret_keys: []
+  required_config_keys:
+  - API_BASE_URL
+- repo: autodesk-project
   service: backend
-  namespace: apps
-- repo: virtual-vacation
-  service: media-gateway
-  namespace: apps
-- repo: autodesk-project
-  service: data-api-service
-  namespace: apps
-- repo: autodesk-project
-  service: data-ingestion-service
-  namespace: apps
-- repo: autodesk-project
-  service: data-processing-service
-  namespace: apps
+  namespace: apps-dev
+  gitops_managed: false
+  store_name: vault-autodesk-project-backend
+  role_name: staging-autodesk-project-backend
+  policy_name: staging-autodesk-project-backend
+  vault_path: temitayo/staging/autodesk-project/backend
+  app_manifest: applications/autodesk-project/autodesk-project-backend.yaml
+  values_path: applications/autodesk-project/autodesk-project-backend/values-staging.yaml
+  chart_path: applications/autodesk-project-backend
+  config_path: applications/autodesk-project-backend/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/autodesk-project-backend
+  required_secret_keys:
+  - DATABASE_URL
+  required_config_keys:
+  - APP_NAME

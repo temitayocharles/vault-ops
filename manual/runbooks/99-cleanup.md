@@ -3,5 +3,6 @@
 If you want to remove only Cila Vault/ESO objects:
 
 ```bash
-kubectl delete -k manual/kustomize/cila-vault
+kubectl kustomize manual/kustomize/cila-vault \
+  --load-restrictor LoadRestrictionsNone | kubectl delete -f -
 ```
