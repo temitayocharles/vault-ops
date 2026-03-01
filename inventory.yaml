@@ -158,6 +158,48 @@ services:
   - KEYCLOAK_URL
   - KEYCLOAK_REALM
   - KEYCLOAK_CLIENT_ID
+- repo: cila-health-monolith
+  service: monolith
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-cila-health-monolith-monolith
+  role_name: staging-cila-health-monolith-monolith
+  policy_name: staging-cila-health-monolith-monolith
+  vault_path: temitayo/staging/cila-health-monolith/monolith
+  app_manifest: applications/cila-health/cila-health-monolith.yaml
+  values_path: applications/cila-health/cila-health-monolith/values-staging.yaml
+  chart_path: applications/cila-health-monolith/monolith
+  config_path: applications/cila-health-monolith/configmaps/app.yaml
+  image_repo: ghcr.io/temitayocharles/cila-health-monolith
+  required_secret_keys:
+  - APP_KEY
+  - POSTGRES_USER
+  - POSTGRES_PASSWORD
+  - REDIS_PASSWORD
+  required_config_keys:
+  - APP_NAME
+  - APP_ENV
+  - APP_DEBUG
+  - APP_URL
+  - DB_CONNECTION
+  - DB_HOST
+  - DB_PORT
+  - DB_DATABASE
+  - CACHE_DRIVER
+  - SESSION_DRIVER
+  - REDIS_HOST
+  - REDIS_PORT
+  - DEVICE_INGESTION_ENABLED
+  - DEVICE_INGESTION_URL
+  - IDENTITY_ACCESS_ENABLED
+  - IDENTITY_ACCESS_URL
+  - PATIENT_PROFILE_ENABLED
+  - PATIENT_PROFILE_URL
+  - NOTIFICATIONS_V2_ENABLED
+  - NOTIFICATIONS_V2_URL
+  - CLINICAL_INTAKE_V2_ENABLED
+  - CLINICAL_INTAKE_V2_URL
+  - TELEMETRY_AUTH_BYPASS
 - repo: cila-health-microservices
   service: device-ingestion
   namespace: apps-dev
@@ -172,6 +214,7 @@ services:
   config_path: applications/cila-health-device-ingestion/configmaps/app.yaml
   image_repo: ghcr.io/temitayocharles/cila-health-device-ingestion
   required_secret_keys:
+  - DATABASE_URL
   - POSTGRES_USER
   - POSTGRES_PASSWORD
   - DEVICE_API_TOKEN
@@ -293,35 +336,64 @@ services:
   required_config_keys:
   - APP_NAME
 - repo: autodesk-project
-  service: frontend
+  service: data-api-service
   namespace: apps-dev
-  gitops_managed: false
-  store_name: vault-autodesk-project-frontend
-  role_name: staging-autodesk-project-frontend
-  policy_name: staging-autodesk-project-frontend
-  vault_path: temitayo/staging/autodesk-project/frontend
-  app_manifest: applications/autodesk-project/autodesk-project-frontend.yaml
-  values_path: applications/autodesk-project/autodesk-project-frontend/values-staging.yaml
-  chart_path: applications/autodesk-project-frontend
-  config_path: applications/autodesk-project-frontend/configmaps/app.yaml
-  image_repo: ghcr.io/temitayocharles/autodesk-project-frontend
-  required_secret_keys: []
-  required_config_keys:
-  - API_BASE_URL
-- repo: autodesk-project
-  service: backend
-  namespace: apps-dev
-  gitops_managed: false
-  store_name: vault-autodesk-project-backend
-  role_name: staging-autodesk-project-backend
-  policy_name: staging-autodesk-project-backend
-  vault_path: temitayo/staging/autodesk-project/backend
-  app_manifest: applications/autodesk-project/autodesk-project-backend.yaml
-  values_path: applications/autodesk-project/autodesk-project-backend/values-staging.yaml
-  chart_path: applications/autodesk-project-backend
-  config_path: applications/autodesk-project-backend/configmaps/app.yaml
-  image_repo: ghcr.io/temitayocharles/autodesk-project-backend
+  gitops_managed: true
+  store_name: vault-autodesk-project-data-api-service
+  role_name: staging-autodesk-project-data-api-service
+  policy_name: staging-autodesk-project-data-api-service
+  vault_path: temitayo/staging/autodesk-project/data-api-service
+  app_manifest: applications/autodesk/autodesk-data-api-service.yaml
+  values_path: applications/autodesk/autodesk-data-api-service/values-staging.yaml
+  chart_path: applications/autodesk-data-api-service
+  config_path: applications/autodesk-project/configmaps/data-api-service.yaml
+  image_repo: ghcr.io/temitayocharles/autodesk-project/data-api-service
   required_secret_keys:
   - DATABASE_URL
+  - REDIS_URL
   required_config_keys:
-  - APP_NAME
+  - APP_ENV
+  - CACHE_TTL
+  - LOG_LEVEL
+- repo: autodesk-project
+  service: data-ingestion-service
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-autodesk-project-data-ingestion-service
+  role_name: staging-autodesk-project-data-ingestion-service
+  policy_name: staging-autodesk-project-data-ingestion-service
+  vault_path: temitayo/staging/autodesk-project/data-ingestion-service
+  app_manifest: applications/autodesk/autodesk-data-ingestion-service.yaml
+  values_path: applications/autodesk/autodesk-data-ingestion-service/values-staging.yaml
+  chart_path: applications/autodesk-data-ingestion-service
+  config_path: applications/autodesk-project/configmaps/data-ingestion-service.yaml
+  image_repo: ghcr.io/temitayocharles/autodesk-project/data-ingestion-service
+  required_secret_keys:
+  - DATABASE_URL
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  required_config_keys:
+  - APP_ENV
+  - LOG_LEVEL
+  - S3_BUCKET_NAME
+- repo: autodesk-project
+  service: data-processing-service
+  namespace: apps-dev
+  gitops_managed: true
+  store_name: vault-autodesk-project-data-processing-service
+  role_name: staging-autodesk-project-data-processing-service
+  policy_name: staging-autodesk-project-data-processing-service
+  vault_path: temitayo/staging/autodesk-project/data-processing-service
+  app_manifest: applications/autodesk/autodesk-data-processing-service.yaml
+  values_path: applications/autodesk/autodesk-data-processing-service/values-staging.yaml
+  chart_path: applications/autodesk-data-processing-service
+  config_path: applications/autodesk-project/configmaps/data-processing-service.yaml
+  image_repo: ghcr.io/temitayocharles/autodesk-project/data-processing-service
+  required_secret_keys:
+  - RABBITMQ_URL
+  required_config_keys:
+  - APP_ENV
+  - HEALTH_PORT
+  - LOG_LEVEL
+  - METRICS_PORT
+  - QUEUE_NAME
