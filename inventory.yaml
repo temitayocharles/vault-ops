@@ -433,3 +433,20 @@ services:
   - PORT
   - REDIS_URL
   - MINIO_ENDPOINT
+- repo: platform-tools
+  service: minio
+  namespace: minio
+  gitops_managed: false
+  store_name: vault-platform-tools-minio
+  role_name: staging-platform-tools-minio
+  policy_name: staging-platform-tools-minio
+  vault_path: temitayo/staging/platform-tools/minio
+  app_manifest: infrastructure/platform/minio/app.yaml
+  values_path: platform-tools/minio/values.yaml
+  chart_path: platform-tools/minio
+  config_path: ""
+  image_repo: quay.io/minio/minio
+  required_secret_keys:
+  - rootUser
+  - rootPassword
+  required_config_keys: []

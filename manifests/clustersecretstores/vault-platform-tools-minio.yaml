@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1
+kind: ClusterSecretStore
+metadata:
+  name: vault-platform-tools-minio
+spec:
+  provider:
+    vault:
+      server: http://vault.vault.svc:8200
+      path: kv
+      version: v2
+      auth:
+        kubernetes:
+          mountPath: kubernetes
+          role: staging-platform-tools-minio
+          serviceAccountRef:
+            name: eso-platform-tools-minio
+            namespace: external-secrets

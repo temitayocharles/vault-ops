@@ -20,6 +20,7 @@ resources:
   - eso-fintech-notification-service-api.yaml
   - eso-fintech-transaction-service-api.yaml
   - eso-fintech-user-service-api.yaml
+  - eso-platform-tools-minio.yaml
   - eso-virtual-vacation-backend.yaml
   - eso-virtual-vacation-media-gateway.yaml
   - eso-virtual-vacation-app.yaml

@@ -16,6 +16,7 @@ Expected path shapes:
 - service-scoped: `kv/temitayo/staging/<repo>/<service>`
 - repo-shared: `kv/temitayo/staging/<repo>/_global`
 - global shared: `kv/temitayo/staging/_global`
+- platform-scoped: `kv/temitayo/staging/platform-tools/<service>`
 
 ## Canonical Inventory
 - `/Users/charlie/Desktop/vault-ops/inventory.yaml`

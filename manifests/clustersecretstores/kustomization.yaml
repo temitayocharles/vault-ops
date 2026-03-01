@@ -20,6 +20,7 @@ resources:
   - vault-fintech-notification-service-api.yaml
   - vault-fintech-transaction-service-api.yaml
   - vault-fintech-user-service-api.yaml
+  - vault-platform-tools-minio.yaml
   - vault-virtual-vacation-backend.yaml
   - vault-virtual-vacation-media-gateway.yaml
   - vault-virtual-vacation-app.yaml
