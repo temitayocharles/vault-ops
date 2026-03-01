@@ -325,7 +325,7 @@ services:
 - repo: ai-adventure-game
   service: game
   namespace: apps-dev
-  gitops_managed: false
+  gitops_managed: true
   store_name: vault-ai-adventure-game-game
   role_name: staging-ai-adventure-game-game
   policy_name: staging-ai-adventure-game-game
@@ -336,9 +336,17 @@ services:
   config_path: applications/ai-adventure-game/configmaps/app.yaml
   image_repo: ghcr.io/temitayocharles/ai-adventure-game
   required_secret_keys:
-  - OPENAI_API_KEY
+  - DATABASE_URL
+  - GEMINI_API_KEY
+  - JWT_SECRET
+  - ADMIN_KEY
   required_config_keys:
   - APP_NAME
+  - PORT
+  - FRONTEND_ORIGIN
+  - FRONTEND_ORIGINS
+  - AI_MODEL
+  - NODE_ENV
 - repo: autodesk-project
   service: data-api-service
   namespace: apps-dev
